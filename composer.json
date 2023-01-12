@@ -1,13 +1,13 @@
 {
-    "name": "ramynasr/phpdoc-markdown",
+    "name": "automattic/phpdoc-markdown",
     "description": "phpDocumentor v3 template that generates Markdown documentation for Github.",
     "keywords" : [ "PHPDoc", "phpDocumentor", "Documentation", "Markdown", "Template", "Github" ],
-    "homepage" : "https://github.com/ramynasr/phpdoc-markdown",
+    "homepage" : "https://github.com/automattic/phpdoc-markdown",
     "license": "MIT",
     "authors": [
         {
-            "name": "Ramy Nasr",
-            "homepage": "https://www.ramynasr.dev"
+            "name": "Automattic",
+            "homepage": "https://automattic.com"
         }
     ],
     "require-dev": {
