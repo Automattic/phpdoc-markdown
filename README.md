@@ -31,7 +31,7 @@ Modify the configuration to suit your project. You can read more about [phpDocum
         <output>docs</output>
         <cache>.phpdoc/cache</cache>
     </paths>
-    <template name="markdown" location="vendor/automattic/phpdoc-markdown/data/templates" />
+    <template name="vendor/automattic/phpdoc-markdown/data/templates/markdown" />
 </phpdocumentor>
 ```
 
