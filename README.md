@@ -13,12 +13,12 @@ For example, a small library can document it's public API in DocBlock comments, 
 Install with composer:
 
 ```bash
-composer require ramynasr/phpdoc-markdown
+composer require automattic/phpdoc-markdown
 ```
 
 ## Usage
 
-Run phpDocumentor and set template as `vendor/ramynasr/phpdoc-markdown/data/templates/markdown`.
+Run phpDocumentor and set template as `vendor/automattic/phpdoc-markdown/data/templates/markdown`.
 **Example using configuration file:**
 
 Add a file called `phpdoc.xml` (or `phpdoc.dist.xml`) with the following content to the root of your project and invoke the `phpdoc` command without arguments.
@@ -31,14 +31,14 @@ Modify the configuration to suit your project. You can read more about [phpDocum
         <output>docs</output>
         <cache>.phpdoc/cache</cache>
     </paths>
-    <template name="markdown" location="vendor/ramynasr/phpdoc-markdown/data/templates" />
+    <template name="markdown" location="vendor/automattic/phpdoc-markdown/data/templates" />
 </phpdocumentor>
 ```
 
 After you've created the configuration file, you can now run phpdoc without arguments, then run the php script to fix the generated files.
 
 ```bash
-./vendor/bin/phpdoc && php ./vendor/ramynasr/phpdoc-markdown/bin/html-to-md.php --dir="docs"
+./vendor/bin/phpdoc && php ./vendor/automattic/phpdoc-markdown/bin/html-to-md.php --dir="docs"
 ```
 
 Or, you can add it to your composer.json scripts section, this is how I do it.
@@ -52,7 +52,7 @@ Or, you can add it to your composer.json scripts section, this is how I do it.
         "@phpdoc-fix"
     ],
     "phpdoc-run": "vendor/bin/phpdoc -v",
-    "phpdoc-fix": "php vendor/ramynasr/phpdoc-markdown/bin/html-to-md.php"
+    "phpdoc-fix": "php vendor/automattic/phpdoc-markdown/bin/html-to-md.php"
 }
 ```
 
