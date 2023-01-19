@@ -57,6 +57,8 @@ function get_target_dir(): string {
 $target = get_target_dir();
 $files = getDirContents($target);
 
+$newFiles = [];
+
 foreach ($files as $file) {
     echo sprintf('Processing %s...', $file);
     $content = file_get_contents($file);
@@ -67,5 +69,15 @@ foreach ($files as $file) {
     file_put_contents($file, $content);
     $mdFilePath = preg_replace('/\.html$/', '.md', $file);
     rename($file, $mdFilePath);
+	$newFiles[] = $mdFilePath;
 	echo 'DONE' . PHP_EOL;
+}
+
+$empty_file_markdown_comment = "[//]: # (Empty file)";
+foreach ($newFiles as $file) {
+	if (strpos(file_get_contents($file), $empty_file_markdown_comment) !== false) {
+		echo sprintf( 'Empty file found - deleting %s...', $file );
+		unlink( $file );
+		echo 'DONE' . PHP_EOL;
+	}
 }
