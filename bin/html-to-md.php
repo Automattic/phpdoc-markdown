@@ -73,9 +73,9 @@ foreach ($files as $file) {
 	echo 'DONE' . PHP_EOL;
 }
 
-$empty_file_markdown_comment = "[//]: # (Empty file)";
 foreach ($newFiles as $file) {
-	if (strpos(file_get_contents($file), $empty_file_markdown_comment) !== false) {
+	$content = trim(file_get_contents($file));
+	if (empty($content)) {
 		echo sprintf( 'Empty file found - deleting %s...', $file );
 		unlink( $file );
 		echo 'DONE' . PHP_EOL;
