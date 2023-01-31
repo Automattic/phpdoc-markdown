@@ -63,6 +63,12 @@ foreach ($files as $file) {
     echo sprintf('Processing %s...', $file);
     $content = file_get_contents($file);
     // .html)
+	if (empty(trim($content))) {
+		echo 'Empty file. Deleting...';
+		unlink( $file );
+		echo 'DONE' . PHP_EOL;
+		continue;
+	}
     $content = str_replace('.html)', '.md)', $content);
     // .html#property_id)
     $content = preg_replace('/\.html(\#[\w\_]+)\)/', '.md$1)', $content);
@@ -71,13 +77,4 @@ foreach ($files as $file) {
     rename($file, $mdFilePath);
 	$newFiles[] = $mdFilePath;
 	echo 'DONE' . PHP_EOL;
-}
-
-foreach ($newFiles as $file) {
-	$content = trim(file_get_contents($file));
-	if (empty($content)) {
-		echo sprintf( 'Empty file found - deleting %s...', $file );
-		unlink( $file );
-		echo 'DONE' . PHP_EOL;
-	}
 }
