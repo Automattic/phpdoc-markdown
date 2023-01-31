@@ -66,13 +66,13 @@
 ### Details
 
 * File: [{{ node.path }}]({{ '../' ~ path(node.file) }})
-{% for interface in node.interfaces if interface.methods|length > 0 %}
+{% for interface in node.interfaces if (interface.getMethods is defined and methods(interface)|length > 0) or (interface.getConstants is defined and constants(interface)|length > 0) %}
 {% if loop.first %}
 * Implements:
 {% endif %}
   * [{{ interface }}]({{ link(interface) }})
 {% endfor %}
-{% for trait in node.usedTraits if trait.methods|length > 0 %}
+{% for trait in node.usedTraits if (trait.getMethods is defined and methods(trait)|length > 0) or (trait.getConstants is defined and constants(trait)|length > 0) %}
 {% if loop.first %}
 * Uses Traits:
 {% endif %}
