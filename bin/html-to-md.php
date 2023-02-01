@@ -61,6 +61,12 @@ foreach ($files as $file) {
     echo sprintf('Processing %s...', $file);
     $content = file_get_contents($file);
     // .html)
+	if (empty(trim($content))) {
+		echo 'Empty file. Deleting...';
+		unlink( $file );
+		echo 'DONE' . PHP_EOL;
+		continue;
+	}
     $content = str_replace('.html)', '.md)', $content);
     // .html#property_id)
     $content = preg_replace('/\.html(\#[\w\_]+)\)/', '.md$1)', $content);
