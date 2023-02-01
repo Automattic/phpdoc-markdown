@@ -57,8 +57,6 @@ function get_target_dir(): string {
 $target = get_target_dir();
 $files = getDirContents($target);
 
-$newFiles = [];
-
 foreach ($files as $file) {
     echo sprintf('Processing %s...', $file);
     $content = file_get_contents($file);
@@ -75,6 +73,5 @@ foreach ($files as $file) {
     file_put_contents($file, $content);
     $mdFilePath = preg_replace('/\.html$/', '.md', $file);
     rename($file, $mdFilePath);
-	$newFiles[] = $mdFilePath;
 	echo 'DONE' . PHP_EOL;
 }
