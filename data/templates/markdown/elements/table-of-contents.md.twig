@@ -1,21 +1,13 @@
 {% block table_of_contents %}
 {% set url_base = (url_base) ? url_base : '../' %}
-{% set non_empty_namespaces = [] %}
-{% if node.children|length > 0 %}
-{% for namespace in node.children|sort_asc %}
-{% if ( namespace.children|length > 0 ) or ( namespace.traits|length > 0 ) or ( namespace.interfaces|length > 0 ) or ( namespace.classes|length > 0 ) or ( constants(namespace)|length > 0 ) or ( namespace.functions|length > 0 ) %}
-{% set non_empty_namespaces = non_empty_namespaces|merge([namespace]) %}
-{% endif %}
-{% endfor %}
-{% endif %}
-{% if non_empty_namespaces|length > 0 %}
+{% for namespace in node.children if ( ( namespace.children|length > 0 ) or ( namespace.traits|length > 0 ) or ( namespace.interfaces|length > 0 ) or ( namespace.classes|length > 0 ) or ( constants(namespace)|length > 0 ) or ( namespace.functions|length > 0 ) ) %}
+{% if loop.first %}
 
 ### Namespaces
 
-{% for namespace in non_empty_namespaces %}
+{% endif %}
 * [{{ namespace }}]({{ url_base ~ namespace|route('url')|raw }})
 {% endfor %}
-{% endif %}
 {% if node.traits|length > 0 %}
 
 ### Traits
