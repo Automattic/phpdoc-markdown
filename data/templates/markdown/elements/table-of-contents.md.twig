@@ -9,7 +9,7 @@
 * [{{ namespace }}]({{ url_base ~ namespace|route('url')|raw }})
 {% endfor %}
 {% if node.traits|length > 0 %}
-{% for trait in node.traits|sort_asc if if (trait.getMethods is defined and methods(trait)|length > 0) or (trait.getConstants is defined and constants(trait)|length > 0) %}
+{% for trait in node.traits|sort_asc if (trait.getMethods is defined and methods(trait)|length > 0) or (trait.getConstants is defined and constants(trait)|length > 0) %}
 {% if loop.first %}
 
 ### Traits
