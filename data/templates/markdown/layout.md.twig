@@ -3,8 +3,10 @@
 {% use 'elements/property.md.twig' %}
 {% use 'elements/method.md.twig' %}
 {% import 'base/macros.md.twig' as macros %}
+{% if ( node.children|length != 0 ) or ( node.traits|length != 0 ) or ( node.interfaces|length != 0 ) or ( node.classes|length != 0 ) or ( node.constants|length != 0 ) or ( node.functions|length != 0 )  or ( node.methods|length != 0 )%}
 {% block title_heading %}{{'# '}}{% endblock %}
 {% block title %}{{ macros.buildNamespaceBreadcrumb(node)|spaceless|replace({"\n": "", "\r": "", "\t": ""}) }}{% endblock %}
 
 {% block content %}{% endblock %}
 {% block footer %}{% endblock %}
+{% endif %}
