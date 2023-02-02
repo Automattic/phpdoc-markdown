@@ -1,0 +1,10 @@
+{% use 'elements/table-of-contents.md.twig' %}
+{% use 'elements/constant.md.twig' %}
+{% use 'elements/property.md.twig' %}
+{% use 'elements/method.md.twig' %}
+{% import 'base/macros.md.twig' as macros %}
+{% block title_heading %}{{'# '}}{% endblock %}
+{% block title %}{{ macros.buildNamespaceBreadcrumb(node)|spaceless|replace({"\n": "", "\r": "", "\t": ""}) }}{% endblock %}
+
+{% block content %}{% endblock %}
+{% block footer %}{% endblock %}
